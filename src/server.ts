@@ -16,19 +16,27 @@ const corsOptions = {
     optionSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
+
 const port: Number = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 connect();
 
+
+//Routes
 app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {
     next(createError(404));
 });
+
+
 // golbal error handling middle ware
 app.use(function (err: Error, req: Request, res: Response, next: NextFunction) {
     // set locals, only providing error in development

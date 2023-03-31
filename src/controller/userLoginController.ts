@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import User from "../model/userModel";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
 const secretTocken = "26b5732ea9eaced91beebc01fce29213e9ff6d8f5294ca3c7f2710169e4fbb0aec19e127e30760ea54028ded74271781b2fb4b3feee44ad8bb22886a78abed9d";
 
 //login controller for the application
@@ -17,11 +18,11 @@ export default {
             userName: req.body.Name,
             userEmail: req.body.Email,
             password: req.body.Password,
-            image: "https://res.cloudinary.com/dzmqstses/image/upload/v1671455534/images_ufcwd1.jpg",
+            image: "https://res.cloudinary.com/dxivlrflh/image/upload/v1679998888/cld-sample.jpg",
         });
         user
             .save(user)
-            .then((data: any) => {
+            .then((data: any) => {                
                 res.json({ status: true, message: "user have been added" });
             })
             .catch((err: any) => {
@@ -29,6 +30,7 @@ export default {
                 res.json({ status: false, message: "user adding error", error: err });
             });
     },
+
     doLogin(req: Request, res: Response) {
         console.log(req.body);
 
@@ -50,16 +52,14 @@ export default {
                                 status: true,
                                 message: "user exist"
                             };
-
-
                             res.status(200).json({ status: true, message: "user exist", tocken: acessTocken, user: userData });
                         } else {
-                            console.log("error1");
+                            console.log("error1 //user password//");
                             res.status(400).json({ status: false, message: "incorrect password" });
                         }
                     });
                 } else {
-                    console.log("error2");
+                    console.log("error2 //user name wrong//");
                     res.status(400).json({ status: false, message: "user dosenot exist" });
                 }
             })

@@ -3,12 +3,12 @@ import userPage from "../controller/userManagementController";
 import autenticate from "../middleware/tockenAuthenticationMiddleware";
 import multer from "multer";
 
-// const upload = multer({
-//     storage: multer.diskStorage({}),
-//     fileFilter: (req, file, cb) => {
-//         cb(null, true);
-//     },
-// });
+const upload = multer({
+    storage: multer.diskStorage({}),
+    fileFilter: (req, file, cb) => {
+        cb(null, true);
+    },
+});
 
 
 const router = express.Router();
@@ -23,6 +23,6 @@ router.get("/editUser", autenticate.authenticateTocken, userPage.getUserDetails)
 router.post("/editUser", autenticate.authenticateTocken, userPage.editUserDetails);
 
 //uploading the user image
-// router.post("/uploadImage", upload.single('image'), autenticate.authenticateTocken, userPage.uploadImage);
+router.post("/uploadImage", autenticate.authenticateTocken, userPage.uploadImage);
 //exporting the routes
 export default router;

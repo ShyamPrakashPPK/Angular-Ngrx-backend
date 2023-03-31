@@ -15,8 +15,6 @@ router.post("/adminSignup", adminManagment.doSignUp);
 //this is the admin login page
 router.post("/adminLogin", adminManagment.doLogin);
 
-router.post("/trialLink", (req, res) => {
-    res.json({ user: [{ name: "amal", email: "amal@gmail.com" }, { name: "adi", email: "adi@gmail.com" }, { name: "rijas", email: "rijas@gmail.com" }], Tocken: "lk;asdlk;asdfj;lkasdfjlk;sadfj;lkjsdff", status: true, error: "this is a error message" });
-});
+
 //exporting the routes
 export default router;

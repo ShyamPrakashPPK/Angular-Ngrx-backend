@@ -9,6 +9,9 @@ router.get("/", autenticate.authenticateTocken, adminUserManagement.getAllUser);
 //to remove a user through the admin side
 router.post("/deleteUser", autenticate.authenticateTocken, adminUserManagement.deleteUser);
 
+//to edit a user data 
+router.put('/editUser', autenticate.authenticateTocken, adminUserManagement.editUser)
+
 //to do search of the data with the user name
 router.get("/doUserSearch", autenticate.authenticateTocken, adminUserManagement.userSearch);
 
